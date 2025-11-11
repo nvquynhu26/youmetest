@@ -1,0 +1,252 @@
+{
+  "artwork_mood_scores": [
+    {
+      "artwork": "The Potato Eaters",
+      "mood_score": 3
+    },
+    {
+      "artwork": "The Raising of Lazarus (after Rembrandt)",
+      "mood_score": 2
+    },
+    {
+      "artwork": "Sorrow",
+      "mood_score": 0
+    },
+    {
+      "artwork": "Skull of a Skeleton with Burning Cigarette",
+      "mood_score": 4
+    },
+    {
+      "artwork": "A Pair of Shoes",
+      "mood_score": 3
+    },
+    {
+      "artwork": "Restaurant de la Sirene at Asnières",
+      "mood_score": 12
+    },
+    {
+      "artwork": "Portrait of Père Tanguy",
+      "mood_score": 13
+    },
+    {
+      "artwork": "Self-Portrait with Grey Felt Hat",
+      "mood_score": 8
+    },
+    {
+      "artwork": "The Yellow House (The Street)",
+      "mood_score": 14
+    },
+    {
+      "artwork": "Café Terrace at Night",
+      "mood_score": 13
+    },
+    {
+      "artwork": "Starry Night Over the Rhône",
+      "mood_score": 12
+    },
+    {
+      "artwork": "Van Gogh's Chair",
+      "mood_score": 4
+    },
+    {
+      "artwork": "Gauguin's Chair",
+      "mood_score": 3
+    },
+    {
+      "artwork": "Sunflowers (series)",
+      "mood_score": 15
+    },
+    {
+      "artwork": "Bedroom in Arles",
+      "mood_score": 6
+    },
+    {
+      "artwork": "Self-Portrait with Bandaged Ear",
+      "mood_score": 4
+    },
+    {
+      "artwork": "Irises",
+      "mood_score": 9
+    },
+    {
+      "artwork": "The Starry Night",
+      "mood_score": 2
+    },
+    {
+      "artwork": "Olive Trees with the Alpilles in the Background",
+      "mood_score": 3
+    },
+    {
+      "artwork": "Wheat Field with Cypresses",
+      "mood_score": 11
+    },
+    {
+      "artwork": "Portrait of Dr. Gachet",
+      "mood_score": 3
+    },
+    {
+      "artwork": "The Church at Auvers",
+      "mood_score": 2
+    },
+    {
+      "artwork": "Wheatfield with Crows",
+      "mood_score": 0
+    },
+    {
+      "artwork": "Almond Blossom",
+      "mood_score": 15
+    },
+    {
+      "artwork": "The Night Café",
+      "mood_score": 1
+    },
+    {
+      "artwork": "La Mousmé",
+      "mood_score": 11
+    },
+    {
+      "artwork": "The Sower (after Millet)",
+      "mood_score": 13
+    },
+    {
+      "artwork": "Still Life: Vase with Twelve Sunflowers",
+      "mood_score": 15
+    },
+    {
+      "artwork": "The Red Vineyard",
+      "mood_score": 10
+    },
+    {
+      "artwork": "L'Arlésienne (Madame Ginoux)",
+      "mood_score": 7
+    },
+    {
+      "artwork": "The Good Samaritan (after Delacroix)",
+      "mood_score": 5
+    },
+    {
+      "artwork": "Pieta (after Delacroix)",
+      "mood_score": 1
+    },
+    {
+      "artwork": "Prisoners' Round (after Doré)",
+      "mood_score": 0
+    },
+    {
+      "artwork": "At Eternity's Gate (Old Man in Sorrow)",
+      "mood_score": 0
+    },
+    {
+      "artwork": "Self-Portrait (1889, Saint-Rémy)",
+      "mood_score": 3
+    },
+    {
+      "artwork": "Cypresses",
+      "mood_score": 4
+    },
+    {
+      "artwork": "Houses at Auvers",
+      "mood_score": 4
+    },
+    {
+      "artwork": "Daubigny's Garden",
+      "mood_score": 5
+    },
+    {
+      "artwork": "Portrait of Adeline Ravoux",
+      "mood_score": 6
+    },
+    {
+      "artwork": "The Siesta (after Millet)",
+      "mood_score": 7
+    },
+    {
+      "artwork": "Garden of the Asylum at Saint-Rémy",
+      "mood_score": 8
+    },
+    {
+      "artwork": "The Harvest",
+      "mood_score": 14
+    },
+    {
+      "artwork": "Boats on the Beach at Saintes-Maries",
+      "mood_score": 13
+    },
+    {
+      "artwork": "Langlois Bridge at Arles",
+      "mood_score": 10
+    },
+    {
+      "artwork": "Still Life: Vase with Fifteen Sunflowers",
+      "mood_score": 15
+    },
+    {
+      "artwork": "Self-Portrait as a Painter",
+      "mood_score": 13
+    },
+    {
+      "artwork": "The Zouave",
+      "mood_score": 11
+    },
+    {
+      "artwork": "Wheatfield (The 'Haystacks' in Provence)",
+      "mood_score": 14
+    },
+    {
+      "artwork": "Orchard in Blossom",
+      "mood_score": 14
+    },
+    {
+      "artwork": "The White Orchard",
+      "mood_score": 14
+    },
+    {
+      "artwork": "Pink Peach Trees (Souvenir de Mauve)",
+      "mood_score": 13
+    },
+    {
+      "artwork": "The Poet's Garden (Arles)",
+      "mood_score": 12
+    },
+    {
+      "artwork": "Memory of the Garden at Etten (Ladies of Arles)",
+      "mood_score": 5
+    },
+    {
+      "artwork": "The Green Vineyard",
+      "mood_score": 13
+    },
+    {
+      "artwork": "The Alyscamps (Falling Autumn Leaves)",
+      "mood_score": 7
+    },
+    {
+      "artwork": "Self-Portrait Dedicated to Paul Gauguin",
+      "mood_score": 6
+    },
+    {
+      "artwork": "La Berceuse (Woman Rocking a Cradle)",
+      "mood_score": 8
+    },
+    {
+      "artwork": "The Courtesan (after Eisen)",
+      "mood_score": 12
+    },
+    {
+      "artwork": "Flowering Plum Orchard (after Hiroshige)",
+      "mood_score": 13
+    },
+    {
+      "artwork": "Bridge in the Rain (after Hiroshige)",
+      "mood_score": 13
+    },
+    {
+      "artwork": "Still Life with Bible",
+      "mood_score": 3
+    },
+    {
+      "artwork": "View of Arles with Irises",
+      "mood_score": 12
+    }
+  ]
+}
