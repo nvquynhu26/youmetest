@@ -14,10 +14,10 @@
     const GITHUB_REPO = 'youmetest'; // T\'ean repo c\uc0\u7911 a b\u7841 n\
     const GITHUB_BRANCH = 'main';    // Nh\'e1nh (th\uc0\u432 \u7901 ng l\'e0 'main' ho\u7863 c 'master')\
 \
-    const URL_EN = `https://raw.githubusercontent.com/$\{GITHUB_USER\}/$\{GITHUB_REPO\}/$\{GITHUB_BRANCH\}/VanGogh_EN.json`;\
-    const URL_VN = `https://raw.githubusercontent.com/$\{GITHUB_USER\}/$\{GITHUB_REPO\}/$\{GITHUB_BRANCH\}/VanGogh_VN.json`;\
-    const URL_KO = `https://raw.githubusercontent.com/$\{GITHUB_USER\}/$\{GITHUB_REPO\}/$\{GITHUB_BRANCH\}/VanGogh_KO.json`;\
-    const URL_MOOD = `https://raw.githubusercontent.com/$\{GITHUB_USER\}/$\{GITHUB_REPO\}/$\{GITHUB_BRANCH\}/VanGogh_mood.json`;\
+    const URL_EN = `https://raw.githubusercontent.com/nvquynhu26/youmetest/refs/heads/main/VanGogh_EN.json`;\
+    const URL_VN = `https://raw.githubusercontent.com/nvquynhu26/youmetest/refs/heads/main/VanGogh_VN.json`;\
+    const URL_KO = `https://raw.githubusercontent.com/nvquynhu26/youmetest/refs/heads/main/VanGogh_KO.json`;\
+    const URL_MOOD = `https://raw.githubusercontent.com/nvquynhu26/youmetest/refs/heads/main/VanGogh_mood.json`;\
     \
     // Bi\uc0\u7871 n l\u432 u tr\u7919  d\u7919  li\u7879 u\
     let dataEN = [], dataVN = [], dataKO = [], dataMood = [];\
