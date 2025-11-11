@@ -317,13 +317,13 @@
         currentLang = lang;\
         switch (lang) \{\
             case 'VN':\
-                allPaintings = dataVN;\
+                allPaintings = dataVN.Artwork;\
                 break;\
             case 'KO':\
-                allPaintings = dataKO;\
+                allPaintings = dataKO.Artwork;\
                 break;\
             default:\
-                allPaintings = dataEN;\
+                allPaintings = dataEN.Artwork;\
                 break;\
         \}\
         // C\uc0\u7853 p nh\u7853 t text c\u7911 a c\'e1c n\'fat (n\u7871 u c\u7847 n)\
