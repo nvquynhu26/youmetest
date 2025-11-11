@@ -64,6 +64,30 @@ document.addEventListener('DOMContentLoaded', () => {
             dataVN = await resVN.json();
             dataKO = await resKO.json();
             dataMood = await resMood.json();
+            // ===== BẮT ĐẦU CODE TỰ ĐỘNG TẠO ID =====
+
+            // Hàm này tạo ID sạch từ tên (vd: "The Sower" -> "the-sower")
+            const createIdFromText = (text) => {
+                if (!text) return 'unknown-' + Math.random().toString(36).substr(2, 9);
+                return text.toLowerCase()
+                    .replace(/\s+/g, '-')       // Thay khoảng trắng bằng '-'
+                    .replace(/[^\w-]+/g, '')  // Xóa ký tự đặc biệt
+                    .replace(/--+/g, '-')      // Thay 2 dấu '--' bằng 1 '-'
+                    .trim();
+            };
+
+            // Bây giờ, duyệt qua mảng tranh và thêm 'id' cho mỗi bức
+            dataEN.Artwork.forEach(painting => {
+                painting.id = createIdFromText(painting.Artwork);
+            });
+            dataVN.Artwork.forEach(painting => {
+                painting.id = createIdFromText(painting.Artwork);
+            });
+            dataKO.Artwork.forEach(painting => {
+                painting.id = createIdFromText(painting.Artwork);
+            });
+            
+            // ===== KẾT THÚC CODE TỰ ĐỘNG TẠO ID =====
 
             console.log('Tải dữ liệu thành công!');
             
