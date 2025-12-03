@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Van Gogh Gram</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" as="style">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <!-- Audio Player -->
+    <audio id="background-music" loop autoplay>
+        <source src="sunflower.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Music Toggle Switch -->
+    <div id="music-toggle-container">
+        <label class="music-toggle-switch">
+            <input type="checkbox" id="music-toggle" checked>
+            <span class="music-toggle-slider"></span>
+        </label>
+    </div>
+    
+    <!-- Welcome Page -->
+    <div id="welcome-page" class="page active">
+        <div id="start-svg-container">
+            <object id="start-svg" data="images/Start.svg" type="image/svg+xml"></object>
+        </div>
+    </div>
+
+    <!-- Reception Page -->
+    <div id="reception-page" class="page">
+        <div id="reception-svg-container">
+            <object id="reception-svg" data="images/reception.svg" type="image/svg+xml"></object>
+        </div>
+    </div>
+
+    <!-- Mapofvangogh Page -->
+    <div id="mapofvangogh-page" class="page">
+        <div id="mapofvangogh-svg-container">
+            <object id="mapofvangogh-svg" data="images/Mapofvangogh.svg" type="image/svg+xml"></object>
+        </div>
+        <!-- Network graph will be created inside SVG Board group -->
+    </div>
+
+    <!-- Colorsstudio Page -->
+    <div id="colorsstudio-page" class="page">
+        <div class="colorsstudio-container">
+            <!-- Search Section -->
+            <div class="search-section">
+                <input type="text" id="search-name" placeholder="작품명으로 검색...">
+                <input type="text" id="search-color" placeholder="색상으로 검색...">
+                <select id="search-period">
+                    <option value="">전체 기간</option>
+                    <option value="네덜란드">네덜란드</option>
+                    <option value="파리">파리</option>
+                    <option value="남프랑스">남프랑스</option>
+                </select>
+                <button id="search-btn">검색</button>
+            </div>
+
+            <!-- Painting Info Section -->
+            <div class="painting-info-section">
+                <div id="painting-info">
+                    <h2 id="painting-title"></h2>
+                    <p id="painting-stage"></p>
+                    <p id="painting-year"></p>
+                    <p id="painting-size"></p>
+                    <p id="painting-type"></p>
+                    <p id="painting-location"></p>
+                    <p id="painting-dominant-color"></p>
+                </div>
+            </div>
+
+            <!-- Painting Display Section -->
+            <div class="painting-display-section">
+                <button class="nav-arrow left-arrow" id="prev-painting">←</button>
+                <div class="painting-container">
+                    <div class="painting-image-wrapper">
+                        <img id="painting-image" src="" alt="Van Gogh Painting">
+                    </div>
+                    <div class="painting-buttons">
+                        <button class="info-btn active" data-type="technique">기술</button>
+                        <button class="info-btn" data-type="meaning">의미</button>
+                        <button class="info-btn" data-type="psychology">심리 분석</button>
+                        <button class="info-btn" data-type="intention">의도 분석</button>
+                    </div>
+                    <div id="info-content-panel" class="info-content-panel">
+                        <h3 id="info-title"></h3>
+                        <p id="info-text"></p>
+                    </div>
+                </div>
+                <button class="nav-arrow right-arrow" id="next-painting">→</button>
+            </div>
+
+            <!-- Visualization Section -->
+            <div class="visualization-section">
+                <div class="viz-left">
+                    <h3>5가지 주요 색상</h3>
+                    <div id="donut-chart"></div>
+                    <div id="color-names"></div>
+                </div>
+                <div class="viz-center">
+                    <h3>색상표</h3>
+                    <div id="color-table"></div>
+                </div>
+                <div class="viz-right">
+                    <h3>심리 미터</h3>
+                    <div class="mood-bar-container">
+                        <div id="mood-bar-chart"></div>
+                        <div class="mood-score-display" id="mood-score-display"></div>
+                        <div class="mood-emoji-display" id="mood-emoji-display"></div>
+                        <div class="mood-expression-display" id="mood-expression-display"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Period Chart Section -->
+            <div class="period-chart-section">
+                <h3>시기별 작품 수</h3>
+                <div id="period-bar-chart"></div>
+            </div>
+
+            <!-- Color Meaning Analysis Section -->
+            <div class="color-meaning-section">
+                <h3>색상 의미 분석</h3>
+                <div id="color-meaning-content"></div>
+            </div>
+            
+            <!-- Exit Button -->
+            <div id="colorsstudio-exit-container">
+                <object id="colorsstudio-exit-svg" data="images/exit.svg" type="image/svg+xml"></object>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

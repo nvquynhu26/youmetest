@@ -1,0 +1,974 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+    background-color: white;
+    overflow: hidden;
+    color: #333;
+}
+
+/* Custom Cursor for Buttons */
+/* Sử dụng file mouse.svg với chiều cao 25pt */
+/* ViewBox gốc: 0 0 60.01 42.92, scale để height = 25pt */
+/* Width tương ứng: 60.01 * (25/42.92) ≈ 35pt */
+/* Áp dụng cho tất cả các element có cursor: pointer */
+button,
+[role="button"],
+a,
+.nav-arrow,
+.info-btn,
+.music-toggle-switch,
+.music-toggle-slider,
+#colorsstudio-exit-container,
+.search-section button,
+.painting-buttons button,
+.period-bar,
+#start-svg svg #doorleft,
+#start-svg svg #doorright,
+#reception-svg svg #Map,
+#reception-svg svg #Colors_studio,
+#reception-svg svg #Bye,
+#mapofvangogh-svg svg #Back,
+#mapofvangogh-svg svg .country,
+[style*="cursor: pointer"] {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="35pt" height="25pt" viewBox="0 0 60.01 42.92"><path fill="%23fff" d="M15.91,40.53c4.07.46,8.93-.34,13.08,0,.26-3.65-5.95-1.71-6.74-2.79-1.18-1.62.89-1.81,1.62-2.2,1.28-.69,1.82-1.33,2.35-2.69,2.14-5.44-1.69-11.75-7.8-11.04v-2.16c7.47-.71,12.31,6.92,9.96,13.68-.37,1.05-1.12,1.88-1.55,2.88,2.51-.25,4.14,2,4.34,4.3,1.47,0,2.96.08,4.43.03.57-.02,1.09-.25,1.66-.26,5.44-.11,13.09.69,18.19-.05,2.36-.34,2.51-1.49,2.34-3.65-.2-2.57-1.97-5.71-3.6-7.68-.74-.9-5.14-4.75-5.24-5.1-.19-.71.77-1.83,1.04-2.71,2.83-9.16-12.55-11.1-11.89-1.31.19,2.88,2.27,3.46,2.61,4.6s-.6,1.87-1.63,1.39c-2.35-1.1-4.01-6.89-2.65-9.23-6.33-2.46-15.61-5.62-22.37-4.02-14.72,3.49-13.26,26.31,1.85,28.01Z"/><path d="M2.11,21.33l1.07-2.41c2.35-4.64,7.19-8.46,12.48-8.88,7.02-.56,15.01,1.85,21.41,4.53.43.04,1.77-1.61,2.26-1.98,4.51-3.42,11.37-.99,12.83,4.41.65,2.4.08,4.04-.58,6.33,3.12,2.74,6.45,6.24,7.72,10.3,1.38,4.43,1.13,8.33-4.27,8.82-12.52-.71-25.74,1.07-38.17.26C-1.54,41.5-6.84,10.45,10.89,5.27c2.04-.59,7.8-.64,3.21-3.29.09-.47.14-2.04.82-1.98,1.42.14,3.1,2.21,3.05,3.68-.11,3.26-4,2.98-6.25,3.61-5.9,1.66-10.08,7.94-9.6,14.04ZM15.91,40.53c4.07.46,8.93-.34,13.08,0,.26-3.65-5.95-1.71-6.74-2.79-1.18-1.62.89-1.81,1.62-2.2,1.28-.69,1.82-1.33,2.35-2.69,2.14-5.44-1.69-11.75-7.8-11.04v-2.16c7.47-.71,12.31,6.92,9.96,13.68-.37,1.05-1.12,1.88-1.55,2.88,2.51-.25,4.14,2,4.34,4.3,1.47,0,2.96.08,4.43.03.57-.02,1.09-.25,1.66-.26,5.44-.11,13.09.69,18.19-.05,2.36-.34,2.51-1.49,2.34-3.65-.2-2.57-1.97-5.71-3.6-7.68-.74-.9-5.14-4.75-5.24-5.1-.19-.71.77-1.83,1.04-2.71,2.83-9.16-12.55-11.1-11.89-1.31.19,2.88,2.27,3.46,2.61,4.6s-.6,1.87-1.63,1.39c-2.35-1.1-4.01-6.89-2.65-9.23-6.33-2.46-15.61-5.62-22.37-4.02-14.72,3.49-13.26,26.31,1.85,28.01Z"/><path d="M46.92,28.34c3.75-.86,4.46,4.33,1.33,4.94-3.42.66-4.17-4.29-1.33-4.94Z"/></svg>') 0 0, pointer !important;
+}
+
+/* Music Toggle Switch */
+#music-toggle-container {
+    position: fixed;
+    left: 20px;
+    top: 50px; /* Hạ xuống thêm 20px từ 30px */
+    z-index: 10000;
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+.music-toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+.music-toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.music-toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    border: 3pt solid black;
+    border-radius: 30px;
+    transition: 0.3s;
+    box-sizing: border-box; /* Đảm bảo border nằm trong kích thước */
+}
+
+.music-toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #f44336; /* Màu đỏ mặc định (khi tắt) */
+    border-radius: 50%;
+    transition: 0.3s;
+    box-sizing: border-box;
+}
+
+.music-toggle-switch input:checked + .music-toggle-slider {
+    background-color: white;
+}
+
+.music-toggle-switch input:checked + .music-toggle-slider:before {
+    left: calc(100% - 21px); /* 60px - 18px - 3pt border - 3px padding = 39px, nhưng dùng calc để chính xác */
+    background-color: #4CAF50; /* Màu xanh khi bật */
+    transform: translateY(-50%);
+}
+
+.music-toggle-switch input:not(:checked) + .music-toggle-slider:before {
+    left: 3px;
+    background-color: #f44336; /* Màu đỏ khi tắt */
+    transform: translateY(-50%);
+}
+
+.page {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.page.active {
+    display: block;
+}
+
+/* Welcome Page */
+#welcome-page {
+    background-color: white;
+}
+
+#start-svg-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#start-svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#start-svg-container object {
+    pointer-events: all;
+}
+
+#start-svg svg #doorleft,
+#start-svg svg #doorright,
+#start-svg svg #doorleft *,
+#start-svg svg #doorright * {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#start-svg svg #doorleft:hover,
+#start-svg svg #doorright:hover,
+#start-svg svg #doorleft:hover *,
+#start-svg svg #doorright:hover * {
+    filter: drop-shadow(0 0 20px #FFD700) drop-shadow(0 0 40px #FFD700);
+}
+
+#start-svg svg #doorleft.door-open {
+    transform: translateX(-100%);
+    transition: transform 1s ease;
+}
+
+#start-svg svg #doorright.door-open {
+    transform: translateX(100%);
+    transition: transform 1s ease;
+}
+
+/* Reception Page */
+#reception-page {
+    background-color: white;
+}
+
+#reception-svg-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#reception-svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#reception-svg-container object {
+    pointer-events: all;
+}
+
+#reception-svg svg #Map,
+#reception-svg svg #Colors_studio,
+#reception-svg svg #Map *,
+#reception-svg svg #Colors_studio * {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#reception-svg svg #Map:hover,
+#reception-svg svg #Colors_studio:hover,
+#reception-svg svg #Map:hover *,
+#reception-svg svg #Colors_studio:hover * {
+    filter: drop-shadow(0 0 20px #FFD700) drop-shadow(0 0 40px #FFD700);
+}
+
+/* Mapofvangogh Page */
+#mapofvangogh-page {
+    background-color: white;
+}
+
+#mapofvangogh-svg-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#mapofvangogh-svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#mapofvangogh-svg-container object {
+    pointer-events: all;
+}
+
+#mapofvangogh-svg svg #belgium,
+#mapofvangogh-svg svg #netherlands,
+#mapofvangogh-svg svg #british,
+#mapofvangogh-svg svg #france,
+#mapofvangogh-svg svg #belgium *,
+#mapofvangogh-svg svg #netherlands *,
+#mapofvangogh-svg svg #british *,
+#mapofvangogh-svg svg #france * {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#mapofvangogh-svg svg #belgium:hover,
+#mapofvangogh-svg svg #netherlands:hover,
+#mapofvangogh-svg svg #british:hover,
+#mapofvangogh-svg svg #france:hover,
+#mapofvangogh-svg svg #belgium:hover *,
+#mapofvangogh-svg svg #netherlands:hover *,
+#mapofvangogh-svg svg #british:hover *,
+#mapofvangogh-svg svg #france:hover * {
+    filter: drop-shadow(0 0 20px #8B4513) drop-shadow(0 0 40px #A0522D);
+    fill: #D2691E !important;
+    opacity: 0.9;
+}
+
+#mapofvangogh-svg svg #Back,
+#mapofvangogh-svg svg #Back * {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#mapofvangogh-svg svg #Back:hover,
+#mapofvangogh-svg svg #Back:hover * {
+    filter: drop-shadow(0 0 10px #FFD700);
+}
+
+.info-panel {
+    position: fixed; /* Cố định vị trí */
+    /* Board trong SVG: x=161.23, y=86.04, width=1597.55, height=896.95, viewBox=1920x1080 */
+    /* Board left: 161.23/1920 = 8.4% từ trái */
+    /* Board top: 86.04/1080 = 8% từ trên */
+    /* Board width: 1597.55/1920 = 83.2% của viewport width */
+    /* Board height: 896.95/1080 = 83.1% của viewport height */
+    /* Board right edge: 8.4vw từ phải */
+    /* Cách viền trên 20pt: top = 8vh + 20pt */
+    /* Cách viền phải 20pt: right = 8.4vw + 20pt */
+    /* Width: Board width (83.2vw) - 20pt mỗi bên = 83.2vw - 40pt */
+    /* Max-height: Board height (83.1vh) - 20pt trên - 20pt dưới = 83.1vh - 40pt */
+    top: calc(8vh + 20pt); /* Cách viền trên Board 20pt */
+    right: calc(8.4vw + 20pt + 100px); /* Cách viền phải Board 20pt, di chuyển sang trái 100px */
+    width: min(500px, calc(83.2vw - 40pt)); /* Width = Board width - 20pt mỗi bên, tự động scale theo viewport */
+    max-width: calc(83.2vw - 40pt); /* Đảm bảo không vượt quá Board width */
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    max-height: calc(83.1vh - 40pt); /* Board height - 20pt trên và 20pt dưới, tự động scale theo viewport */
+    overflow-y: auto;
+    display: none;
+    border: 1px solid #e5e5e5;
+    text-align: left;
+    z-index: 1000; /* Đảm bảo nằm trên các element khác */
+}
+
+.info-panel.active {
+    display: block;
+}
+
+.info-panel h3 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 21.6px; /* 24px * 0.9 = 21.6px (giảm 10%) */
+    font-weight: 700;
+    text-align: left;
+}
+
+#location-list {
+    list-style: none;
+}
+
+#location-list li {
+    padding: 15px;
+    margin: 10px 0;
+    background: #f9f9f9;
+    border-radius: 8px;
+    border-left: 3px solid #FFD700;
+    line-height: 1.6;
+}
+
+#location-list li strong {
+    display: block;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+#location-list li em {
+    display: block;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+    font-style: normal;
+}
+
+/* Colorsstudio Page */
+#colorsstudio-page {
+    background-color: white;
+    overflow-y: auto;
+}
+
+.colorsstudio-container {
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    /* Loại bỏ viền đen của block ngoài cùng */
+}
+
+.search-section {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 40px;
+    padding: 24px;
+    background: black; /* Đổ màu đen */
+    border-radius: 12px;
+    border: 3pt solid black; /* Viền đen */
+}
+
+.search-section input,
+.search-section select {
+    flex: 1;
+    padding: 12px 16px;
+    border: 3pt solid black;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Pretendard', sans-serif;
+    transition: border-color 0.3s;
+    background: white;
+    color: #666; /* Chữ màu xám */
+}
+
+.search-section input:focus,
+.search-section select:focus {
+    outline: none;
+    border-color: black;
+}
+
+.search-section button {
+    padding: 12px 24px;
+    background: white;
+    border: 3pt solid black;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: 'Pretendard', sans-serif;
+    transition: all 0.3s;
+    color: black;
+}
+
+.search-section button:hover {
+    background: black;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.painting-info-section {
+    margin-bottom: 40px;
+    padding: 28px;
+    background: white;
+    border-radius: 12px;
+    border: 3pt solid black;
+}
+
+#painting-info h2 {
+    margin-bottom: 20px;
+    color: black;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+#painting-info p {
+    margin: 12px 0;
+    color: black;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.painting-display-section {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.nav-arrow {
+    position: absolute; /* Đặt absolute để gần tranh */
+    background: white;
+    border: 3pt solid black;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    transition: all 0.3s;
+    color: black;
+    z-index: 100;
+    flex-shrink: 0; /* Không bị co lại */
+}
+
+.nav-arrow.left-arrow {
+    left: -70px; /* Đặt gần bên trái tranh, cách tranh 20px */
+}
+
+.nav-arrow.right-arrow {
+    right: -70px; /* Đặt gần bên phải container, cách container 20px */
+}
+
+.nav-arrow:hover {
+    background: black;
+    color: white;
+    transform: scale(1.1);
+}
+
+.painting-container {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.painting-image-wrapper {
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+#painting-image {
+    max-width: 100%;
+    max-height: 500px;
+    border-radius: 10px;
+    border: 3pt solid black;
+    transition: opacity 0.3s;
+    display: block;
+}
+
+#painting-image.faded {
+    opacity: 0.3;
+}
+
+.painting-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    min-width: 150px;
+}
+
+.info-btn {
+    padding: 12px 20px;
+    background: white;
+    color: black;
+    border: 3pt solid black;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    width: 100%;
+}
+
+.info-btn:hover {
+    background: black;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.info-btn.active {
+    background: black;
+    color: white;
+}
+
+.info-content-panel {
+    flex: 1;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    border: 3pt solid black;
+    min-height: 400px;
+    max-height: 600px;
+    overflow-y: auto;
+    text-align: left;
+}
+
+.info-content-panel h3 {
+    margin-bottom: 15px;
+    color: black;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.info-content-panel p {
+    line-height: 1.6;
+    color: black;
+    white-space: pre-line;
+    font-size: 14px;
+}
+
+.visualization-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 50px;
+    padding: 32px;
+    background: white;
+    border-radius: 12px;
+    border: 3pt solid black;
+}
+
+.viz-left,
+.viz-center,
+.viz-right {
+    text-align: center;
+}
+
+.viz-left h3,
+.viz-center h3,
+.viz-right h3 {
+    margin-bottom: 24px;
+    color: black;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+#color-names {
+    margin-top: 20px;
+    font-size: 13px;
+    color: black;
+    line-height: 2;
+}
+
+#color-names .color-name-item {
+    margin: 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.color-indicator {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    border: 2pt solid black;
+    flex-shrink: 0;
+}
+
+.color-name-text {
+    font-size: 13px;
+    color: black;
+}
+
+#color-table {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: center;
+}
+
+.color-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.color-item.dominant {
+    width: 100%;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 3pt solid black;
+}
+
+.color-item.grid-item {
+    width: 48%;
+    display: inline-flex;
+}
+
+.color-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.color-swatch {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    border: 3pt solid black;
+    flex-shrink: 0;
+}
+
+.color-item.dominant .color-swatch,
+.dominant-swatch {
+    width: 80px;
+    height: 80px;
+}
+
+.color-code-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.color-code {
+    font-family: 'Pretendard', monospace;
+    font-size: 13px;
+    color: black;
+    font-weight: 500;
+}
+
+.color-label {
+    font-size: 11px;
+    color: black;
+    font-weight: 600;
+}
+
+#complementary-colors {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 3pt solid black;
+}
+
+.complementary-header {
+    font-size: 14px;
+    color: black;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.complementary-description {
+    font-size: 12px;
+    color: black;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.complementary-colors-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+}
+
+.complementary-color-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    min-width: 60px;
+}
+
+.complementary-swatch {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 3pt solid black;
+    transition: transform 0.2s ease;
+}
+
+.complementary-swatch:hover {
+    transform: scale(1.1);
+}
+
+.complementary-code {
+    font-family: 'Pretendard', monospace;
+    font-size: 10px;
+    color: black;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Mood Bar Container */
+.mood-bar-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Mood Bar Chart */
+#mood-bar-chart {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Mood Score Display */
+.mood-score-display {
+    font-size: 3rem;
+    font-weight: 800;
+    color: black;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 19.5px; /* Tăng 30% từ 15px (15 * 1.3 = 19.5) */
+}
+
+/* Mood Emoji Display */
+.mood-emoji-display {
+    font-size: 5.85rem; /* Tăng thêm 50% từ 3.9rem (3.9 * 1.5 = 5.85) */
+    text-align: center;
+    margin-bottom: 13px; /* Tăng 30% từ 10px (10 * 1.3 = 13) */
+    line-height: 1;
+}
+
+/* Mood Expression Display */
+.mood-expression-display {
+    font-size: 1.2rem; /* To hơn một chút */
+    font-weight: bold; /* Viết đậm */
+    color: black;
+    text-align: center;
+    line-height: 1.5;
+    padding: 0 10px;
+}
+
+.meter-segment {
+    transition: all 0.3s ease;
+}
+
+.meter-needle {
+    transition: transform 0.5s ease;
+}
+
+.meter-pivot {
+    transition: all 0.3s ease;
+}
+
+.meter-label {
+    font-size: 12px;
+    fill: #666;
+    font-weight: 600;
+}
+
+/* Exit Button for Colorsstudio */
+#colorsstudio-exit-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10000; /* Rất cao để luôn nổi lên trên */
+    cursor: pointer;
+    width: 94px; /* Tăng thêm 20% từ 78px (78 * 1.2 = 93.6, làm tròn 94) */
+    height: 94px; /* Tăng thêm 20% từ 78px */
+    transition: transform 0.3s;
+}
+
+#colorsstudio-exit-container:hover {
+    transform: scale(1.1);
+}
+
+#colorsstudio-exit-svg {
+    width: 100%;
+    height: 100%;
+    pointer-events: all;
+}
+
+.mood-description {
+    font-size: 14px;
+    color: #333;
+}
+
+.mood-description strong {
+    color: #333;
+    font-weight: 700;
+}
+
+.period-chart-section {
+    padding: 32px;
+    background: white;
+    border-radius: 12px;
+    margin: 50px auto;
+    border: 3pt solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 1400px; /* Tăng để chứa chart dài hơn */
+    width: 95%; /* Tăng width để chart dài hơn */
+    text-align: center; /* Căn giữa nội dung */
+}
+
+.period-chart-section h3 {
+    margin-bottom: 24px;
+    color: black;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
+}
+
+#period-bar-chart {
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center; /* Căn giữa */
+}
+
+#period-bar-chart svg {
+    display: block;
+    margin: 0 auto; /* Căn giữa SVG */
+    max-width: 100%; /* Đảm bảo không vượt quá container */
+}
+
+.period-bar {
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.period-bar.highlighted {
+    opacity: 1;
+    filter: brightness(1.3);
+    stroke: #FFD700 !important; /* Màu vàng */
+    stroke-width: 5pt !important; /* Viền dày 5pt */
+}
+
+.period-bar-glow {
+    transition: opacity 0.3s ease;
+}
+
+.period-bar:not(.highlighted) {
+    opacity: 0.7;
+}
+
+.period-bar:hover {
+    opacity: 0.9;
+    filter: brightness(1.1);
+}
+
+.period-labels-container {
+    padding: 20px 0;
+}
+
+.period-label-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.period-color-box {
+    width: 16px;
+    height: 16px;
+    background-color: black;
+    border: 2pt solid black;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.period-label-text {
+    font-size: 13px;
+    color: black;
+    font-family: 'Pretendard', sans-serif;
+}
+
+.period-label-item.highlighted {
+    border: 5pt solid #FFD700; /* Viền vàng dày 5pt */
+    border-radius: 8px;
+    padding: 8px;
+    background-color: rgba(255, 215, 0, 0.1); /* Nền vàng nhạt */
+}
+
+.period-label-item.highlighted .period-label-text {
+    font-weight: bold;
+    color: #FFD700; /* Màu vàng để highlight */
+    font-size: 1em; /* To hơn một chút */
+}
+
+.color-meaning-section {
+    padding: 32px;
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    border: 3pt solid black;
+}
+
+.color-meaning-section h3 {
+    margin-bottom: 24px;
+    color: black;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+#color-meaning-content {
+    line-height: 1.8;
+}
+
+.color-meaning-item {
+    margin-bottom: 20px;
+    padding: 16px;
+    background: white;
+    border-radius: 8px;
+    border-left: 3pt solid black;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.color-meaning-swatch {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    border: 3pt solid black;
+    flex-shrink: 0;
+}
+
+.color-meaning-text {
+    flex: 1;
+    font-size: 14px;
+    color: black;
+    line-height: 1.7;
+}
+
+.color-meaning-text strong {
+    color: black;
+    font-weight: 600;
+}
+
